@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<h4>Doctor's Appointments</h4>
+	</div>
+	<div class="row">
+		<div class="col s8">
+			<h5>Welcome, {{AC.logged_user}}</h5>
+		</div>
+		<div class="col s4">
+			<div class="input-field">
+				<input type="text" ng-model="filterAppt" placeholder="search">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<table class="striped">
+				<thead>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Patient Name</th>
+					<th>Complain</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="appointment in AC.appointments | filter: filterAppt | orderBy:[ 'scheduled_date', 'scheduled_time'] ">
+						<td>{{appointment.scheduled_date | date}}</td>
+						<td>{{appointment.scheduled_time | date:"h:mma"}}</td>
+						<td>{{appointment.name}}</td>
+						<td>{{appointment.complain}} <a href ng-if="appointment.name == AC.logged_user" ng-click="AC.cancelappointment(appointment)">Cancel</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s4 offset-s8">
+			<a href="#/newappointment"><button class='btn btn-medium blue'>Schedule Appointment</button></a>
+		</div>
+	</div>
+</div>

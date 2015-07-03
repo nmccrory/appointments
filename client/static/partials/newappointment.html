@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="section">
+			<a href="#/">Go back</a>
+		</div>
+	</div>
+	<div class="row">
+		<h3>New Appointment</h3>
+	</div>
+	<p ng-repeat="error in AC.errors" style="color:red">{{error}}</p>
+	
+	<div class="row">
+		<div class="col s3">
+			<label>Date</label><input type="date" min="{{AC.now}}" ng-model='AC.newAppt.scheduled_date'>
+		</div>
+		<div class="col s2">
+			<form name="myForm">
+				<label>Time</label><input type="time" step="900" name="input" min="08:00:00" max="17:00:00" ng-model='AC.newAppt.scheduled_time' required>	
+			</form>
+		</div>
+		<div class="col s6">
+			<p style='color: orange'ng-if="myForm.input.$error.min === true || myForm.input.$error.max === true">
+		Appointment time must be between 8am and 5pm</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s6">
+			<label>Reason for Appointment</label>
+			<textarea class='materialize-textarea' ng-model='AC.newAppt.complain'></textarea>
+		</div>
+	</div>
+	<div class="row">
+		<a href ng-click="AC.addappointment()"><button class='btn btn-large green'>Make Appointment</button></a>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+{
+  "name": "MEAN_Friends",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-timeago": "^0.1.12",
+    "body-parser": "^1.13.1",
+    "express": "~4.2.0"
+  }
+}
